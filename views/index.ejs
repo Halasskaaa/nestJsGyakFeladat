@@ -16,9 +16,9 @@
         <form method="post">
 
             <h3>Termékek:</h3>
-            <input id="product01" type="checkbox" name="product" value="Pink">
-            <input id="product02" type="checkbox" name="product" value="Blue">
-            <input id="product03" type="checkbox" name="product" value="Black">
+            1<input type="radio" name="product" value="Pink" required>
+            2<input type="radio" name="product" value="Blue">
+            3<input type="radio" name="product" value="Black">
 
             <label>
                 <h3>Név:</h3>
@@ -38,7 +38,7 @@
 
             <label>
                 <h3>Telefonszám:</h3>
-                +36 <input type="tel" name="phoneNumber" placeholder="Telefonszám" required">
+                <input type="tel" name="phoneNumber" placeholder="Telefonszám" required>
             </label>
 
             <label>
@@ -72,6 +72,17 @@
                     <th>Szállítási cím</th>
                 </tr>
             </thead>
+            
+            <tbody>
+                <% getProduct.forEach(termek=> { %>
+                <tr>
+                        <td><%= termek.product %></td>
+                        <td><%= termek.customerName %></td>
+                        <td><%= termek.billingAddress %></td>
+                        <td><%= termek.shippingAddress %></td>
+                </tr>
+                <%})%>
+            </tbody>
         </table>
     </div>
 
