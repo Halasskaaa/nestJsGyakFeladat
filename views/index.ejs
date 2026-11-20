@@ -68,6 +68,27 @@
                 <% } %>
                     <button type="submit">Elküldés</button>
         </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Termék</th>
+                    <th>Vásárló neve</th>
+                    <th>Számlázási cím</th>
+                    <th>Szállítási cím</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>termek
+                    <% getProuct.forEach(termek=> { %>
+                        <td><%= termek.product %></td>
+                        <td><%= termek.customerName %></td>
+                        <td><%= termek.billingAddress %></td>
+                        <td><%= termek.shippingAddnress %></td>
+                    <%})%>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
 </body>

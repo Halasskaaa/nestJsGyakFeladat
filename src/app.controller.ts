@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Post, Render } from '@nestjs/common';
 import { AppService } from './app.service.js';
-import { EditProfileDto } from './editprofile.dto.js';
+import { NewProduct } from './newProduct.dto.js';
 
 @Controller()
 export class AppController {
@@ -8,20 +8,22 @@ export class AppController {
 
   @Get()
   @Render('index')
-  getFooldal() {
+  async getFooldal() {
     return {
-      title: 'My First NestJS App'
+      title: 'My First NestJS App',
+      getProduct: await this.appService.getOrder()
     }
   }
 
   @Post('/')
   @Render('index')
-  editProfile(@Body() body: EditProfileDto) {
-    const userRegex = /^[a-z][a-z\d]*$/;
-    if (!userRegex.test(body.username)) {
-      return {
-        error: "Invalid username"
-      }
-    }
+  async addTransaction(@Body() body: NewProduct) {
+    await this.appService.addOrder(
+      body.customerName,
+      body.product,
+      body.billingAddress,
+      body.shippingAddnress
+    )
+    return this.getFooldal()
   }
 }
