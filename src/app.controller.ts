@@ -19,11 +19,11 @@ export class AppController {
   @Render('index')
   async addTransaction(@Body() body: NewProduct) {
     await this.appService.addOrder(
-      body.customerName,
       body.product,
+      body.customerName,
       body.billingAddress,
-      body.shippingAddnress
+      body.shippingAddress
     )
-    return this.getFooldal()
+    return this.appService.getOrder()
   }
 }

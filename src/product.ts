@@ -3,5 +3,5 @@ export interface Product {
     product: string;
     customerName: string;
     billingAddress: string;
-    shippingAddnress: string;
+    shippingAddress: string;
 }

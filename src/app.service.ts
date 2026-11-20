@@ -24,10 +24,10 @@ export class AppService {
     return rows;
   }
 
-  async addOrder(product: string,customerName: string,billingAddress: string,shippingAddnress: string;) {
+  async addOrder(product: string,customerName: string,billingAddress: string,shippingAddress: string) {
     const [results] = await mysqlConnection.execute(
-      'INSERT INTO orders (product,customerName,billingAddress,shippingAddnress) VALUES (?,?,?,?)',
-      [product,customerName,billingAddress,shippingAddnress]
+      'INSERT INTO orders (product,customerName,billingAddress,shippingAddress) VALUES (?,?,?,?)',
+      [product,customerName,billingAddress,shippingAddress]
     )
     const rows = results as any;
     return {
@@ -35,7 +35,7 @@ export class AppService {
       product,
       customerName,
       billingAddress,
-      shippingAddnress
+      shippingAddress
     } as NewProduct;
   }
 
